@@ -107,6 +107,7 @@ class PeoplesListFragment : Fragment(),
    * Callback for searchView query submit
    */
   override fun onQueryTextSubmit(query: String?): Boolean {
+    viewModel.searchPeople(query!!)
     return true
   }
 
@@ -114,6 +115,8 @@ class PeoplesListFragment : Fragment(),
    * Callback for searchView close
    */
   override fun onClose(): Boolean {
+    viewModel.getAllPeople()
+    searchView.onActionViewCollapsed()
     return true
   }
 

@@ -60,8 +60,8 @@ class PeopleRepository(application: Application) {
     return peopleDao.find(id)
   }
 
-  /*fun findPeople(name: String):LiveData<List<People>> {
+  fun findPeople(name: String):LiveData<List<People>> {
     return peopleDao.findBy(name)
-  }*/
+  }
 
 }
