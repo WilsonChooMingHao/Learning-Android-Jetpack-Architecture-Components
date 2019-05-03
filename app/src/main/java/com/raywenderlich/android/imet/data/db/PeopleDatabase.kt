@@ -22,9 +22,9 @@ abstract class PeopleDatabase : RoomDatabase() {
 
         // 3
         fun getInstance(application:Application): PeopleDatabase {
-            synchronized(lock) {
+            synchronized(PeopleDatabase.lock) {
                 if(PeopleDatabase.INSTANCE == null) {
-                    PeopleDatabase.INSTANCE = Room.databaseBuilder(application, PeopleDatabase::class.java, DB_NAME)
+                    PeopleDatabase.INSTANCE = Room.databaseBuilder(application, PeopleDatabase::class.java, PeopleDatabase.DB_NAME)
                             .allowMainThreadQueries()
                             .addCallback(object: RoomDatabase.Callback() {
                                 override fun onCreate(db: SupportSQLiteDatabase) {

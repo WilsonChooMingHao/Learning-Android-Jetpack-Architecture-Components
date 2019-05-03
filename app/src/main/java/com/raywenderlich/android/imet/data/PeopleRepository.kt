@@ -34,6 +34,7 @@
 package com.raywenderlich.android.imet.data
 
 import android.app.Application
+import android.arch.lifecycle.LiveData
 import com.raywenderlich.android.imet.data.model.People
 import com.raywenderlich.android.imet.data.db.PeopleDao
 import com.raywenderlich.android.imet.data.db.PeopleDatabase
@@ -47,16 +48,20 @@ class PeopleRepository(application: Application) {
     peopleDao = peopleDatabase.peopleDao()
   }
 
-  fun getAllPeople(): List<People> {
+  fun getAllPeople(): LiveData<List<People>> {
     return peopleDao.getAll()
   }
 
   fun insertPeople(people: People) {
-    peopleDao.getAll()
+    peopleDao.insert(people)
   }
 
   fun findPeople(id: Int): People? {
     return peopleDao.find(id)
   }
+
+  /*fun findPeople(name: String):LiveData<List<People>> {
+    return peopleDao.findBy(name)
+  }*/
 
 }
