@@ -45,6 +45,7 @@ import kotlinx.android.synthetic.main.fragment_add_people.*
  * The Fragment to add people
  */
 class AddPeopleFragment : Fragment() {
+  private lateinit var viewModel: AddPeopleViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -83,7 +84,8 @@ class AddPeopleFragment : Fragment() {
         textInputFacebook.editText?.text.toString(),
         textInputTwitter.editText?.text.toString()
     )
-    (activity?.application as IMetApp).getPeopleRepository().insertPeople(people)
+    //(activity?.application as IMetApp).getPeopleRepository().insertPeople(people)
+    viewModel.addPeople(people)
 
     activity?.finish()
   }
